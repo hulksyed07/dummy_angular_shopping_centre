@@ -1,7 +1,15 @@
-angular.module('Angello.Productboard').controller('ProductboardCtrl', function(ProductModel, AngelloHelper, $http) {
+angular.module('Angello.Productboard').controller('ProductboardCtrl', function(ProductModel, AngelloHelper, TypeModel, $http) {
     var productboard = this;
-
+    // productboard.types = {}
     productboard.types = ProductModel.getTypes();
+    productboard.getAllTypes = function() {
+        TypeModel.getTypes()
+            .then( function(result){
+                productboard.types = result;
+                console.log('productboard.types is: ' + productboard.types);
+            });
+    }
+
     productboard.products = {};
     productboard.getAllProducts = function() {
         ProductModel.getProducts()
@@ -12,8 +20,11 @@ angular.module('Angello.Productboard').controller('ProductboardCtrl', function(P
     };
 
     productboard.getAllProducts();
+    // productboard.getAllTypes();
+    console.log('productboard.types outside is:' + productboard.types);
 
     productboard.typesIndex = AngelloHelper.buildIndex(productboard.types, 'name');
+    console.log('productboard.typeindex is: ' + productboard.typesIndex);
     productboard.currentProduct = null;
     productboard.editedProduct = {};
 
@@ -21,6 +32,8 @@ angular.module('Angello.Productboard').controller('ProductboardCtrl', function(P
     productboard.setCurrentProduct = function (product) {
         productboard.currentProduct = product;
         productboard.currentType = productboard.typesIndex[product.type];
+        // productboard.currentType = { name: product.type };
+        console.log('product current-Type is: ' + productboard.currentType );
         productboard.editedProduct = angular.copy(productboard.currentProduct);
     };
 

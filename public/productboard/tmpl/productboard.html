@@ -1,7 +1,7 @@
 <!-- <div ng-controller="ProductboardCtrl as productboard"> -->
 <div>
 	<div class="col-md-4">
-		<h2>Stories</h2>
+		<h2>Products</h2>
 		<product class="callout"
                ng-repeat="product in productboard.products"
                ng-click="productboard.setCurrentProduct(product)">
@@ -58,7 +58,7 @@
         <div ng-if="!productboard.currentProduct">
             <button class="btn pull-right btn-default"
                     ng-disabled="productboard.detailsForm.$invalid"
-                    ng-click="productboard.createProduct()">New productboard</button>
+                    ng-click="productboard.createProduct()">Add this Product</button>
         </div>
 	</div>
 </div>
