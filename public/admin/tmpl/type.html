@@ -1,0 +1,22 @@
+<!-- <div ng-controller="TypeController as typeCtrl"> -->
+<div>
+	
+	<div class="col-md-4">
+		<type class="callout" ng-repeat="type in typeCtrl.types"  ng-click="typeCtrl.setCurrentType(type)">
+		</type>
+	</div>
+
+	<div>
+		<button ng-hide="!typeCtrl.currentProduct" ng-click="typeCtrl.deleteType()">Delete</button>
+		<form>
+			<input type="text" ng-model="typeCtrl.editedType.name"></input>
+		</form>
+		<div ng-show="typeCtrl.currentType">
+			<button ng-click="typeCtrl.updateCancel()">Cancel</button>
+			<button ng-click="typeCtrl.updateType()">Update</button>
+		</div>
+		<div ng-show="!typeCtrl.currentType">
+			<button ng-click="typeCtrl.createType()">New Type</button>
+		</div>
+	</div>
+</div>

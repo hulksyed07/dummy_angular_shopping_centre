@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html  ng-app="Angello" >
+<head>
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+	<!-- <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular-route.min.js"></script>
+	
+	
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="app.css">
+	<script src="app/app.js"></script>
+	<script src="productboard/Productboard.js"></script>
+	<script src="app/services/UtilsService.js"></script>
+	<script src="app/services/AngelloHelper.js"></script>
+	<script src="productboard/services/ProductboardService.js"></script>
+	<script src="productboard/directives/ProductboardDirective.js"></script>
+	<script src="productboard/controllers/ProductboardController.js"></script>
+	<script src="admin/Admin.js"></script>>
+	<script src="admin/services/TypeService.js"></script>
+	<script src="admin/directives/TypeDirective.js"></script>
+	<script src="admin/controllers/TypeController.js"></script>
+	<script src="customerdashboard/Customerdashboard.js"></script>
+	<script src="customerdashboard/services/CustomerdashboarService.js"></script>
+	<script src="customerdashboard/directives/CustomerdashboardDirective.js"></script>
+	<script src="customerdashboard/controllers/CustomerdashboardController.js"></script>
+	<script src="Angello.js"></script>
+
+	<title>Angello Lite</title>
+</head>
+	<body>
+		<a href="#/">Productboard</a>
+		<a href="#/types">Types</a>
+		<a href="#/customerdashboard">CustomerDashboard</a>
+		<div ng-view=""></div>
+	</body>
+</html>

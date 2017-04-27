@@ -1,0 +1,64 @@
+<!-- <div ng-controller="ProductboardCtrl as customerdashboard"> -->
+<div>
+	<div class="col-md-4">
+		<h2>Stories</h2>
+		<customerproduct class="callout"
+               ng-repeat="product in customerdashboard.products"
+               ng-click="customerdashboard.setCurrentProduct(product)">
+        </customerproduct>
+		<br/>
+		<a class="btn btn-primary" ng-click="customerdashboard.resetForm()">
+            <span class="glyphicon glyphicon-plus"></span>
+        </a>
+	</div>
+	<div class="col-md-6 content">
+		<h2>Product</h2>
+		<button class="btn pull-right btn-default" ng-hide="!customerdashboard.currentProduct" ng-click="customerdashboard.deleteProduct()" >Delete</button><br><br>
+		<form class="form-horizontal" name="customerdashboard.detailsForm">
+			<div class="form-group">
+				<label class="control-label" for="inputTitle">Title</label>
+				<div class="controls">
+					<input type="text" class="form-control" id="inputTitle" placeholder="Title" ng-model="customerdashboard.editedProduct.title" ng-required="true" />
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label class="control-label" for="inputType">Type</label>
+				<div class="controls">
+					<select id="inputType" class="form-control" ng-model="customerdashboard.currentType"
+							ng-options="t.name for t in customerdashboard.types"
+							ng-change="customerdashboard.setCurrentType(customerdashboard.currentType)"></select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label" for="inputDescription">Description</label>
+				<div class="controls">
+					<textarea id="inputDescription" class="form-control" placeholder="Description" rows="3"
+							  ng-model="customerdashboard.editedProduct.description"></textarea>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label" for="inputTitle">Title</label>
+				<div class="controls">
+					<input type="number" class="form-control" id="inputPrice" placeholder="Price" ng-model="customerdashboard.editedProduct.price" ng-required="true" />
+				</div>
+			</div>
+			
+		</form>
+
+		<div ng-if="customerdashboard.currentProduct">
+            <button class="btn btn-default" ng-click="customerdashboard.updateCancel()">
+                Cancel
+            </button>
+            <button class="btn pull-right btn-default"
+                    ng-disabled="customerdashboard.detailsForm.$invalid"
+                    ng-click="customerdashboard.updateProduct()">Update</button>
+        </div>
+        <div ng-if="!customerdashboard.currentProduct">
+            <button class="btn pull-right btn-default"
+                    ng-disabled="customerdashboard.detailsForm.$invalid"
+                    ng-click="customerdashboard.createProduct()">New customerdashboard</button>
+        </div>
+	</div>
+</div>
