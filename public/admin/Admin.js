@@ -1,1 +1,1 @@
-angular.module('Angello.Admin',[]);
+angular.module('Angello.Admin',['ngResource']);

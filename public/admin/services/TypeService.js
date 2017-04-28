@@ -1,4 +1,4 @@
-angular.module('Angello.Admin').service('TypeModel', function($http, UtilsService){
+angular.module('Angello.Admin').service('TypeModel', function($http, UtilsService, $resource){
 	var service = this;
 
 	service.getTypes = function(){
@@ -9,6 +9,50 @@ angular.module('Angello.Admin').service('TypeModel', function($http, UtilsServic
 					return UtilsService.objectToArray(result);
 				});
 	}
+
+	// service.getTypes = function(){
+	// 	return $resource('/api/types',{},{},{
+	// 				get: {
+	// 					method: 'GET'
+	// 				}
+	// 			});
+
+	// }
+
+
+	// service.getTypes = function(){
+	// 	return $resource('/api/types',{},{
+	// 				query: {
+	// 	                method: 'GET',
+	// 	                isArray: false,
+	// 	                transformResponse: function(data, header) {
+	// 	                    var wrapped = angular.fromJson(data);
+	// 	                    angular.forEach(wrapped.items, function(item, idx) {
+	// 	                        wrapped.items[idx] = new Job(item);
+	// 	                    });
+	// 	                    return wrapped;
+	// 	                }
+	// 	            }
+
+	// 			});
+
+	// }
+
+
+
+	
+
+	// resources.factory('fetch_person_data', function ($resource, API_ENDPOINT) {
+	//   return $resource(API_ENDPOINT + '/individuals/fetch_person_data/:id/:type', {},
+	//     {
+	//       id: '@person_id',
+	//       type: '@type'
+	//     },{
+	//       get: {
+	//         method: 'GET'
+	//     }
+	//   });
+	// }); 
 
 	service.createType = function(type){
 		return $http.post('/api/types', type)

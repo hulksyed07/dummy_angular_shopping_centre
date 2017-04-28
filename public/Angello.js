@@ -1,4 +1,4 @@
-var myModule = angular.module('Angello',['ngRoute', 'Angello.Common', 'Angello.Productboard', 'Angello.Admin', 'Angello.Customerdashboard']);
+var myModule = angular.module('Angello',['ngRoute', 'ngResource', 'Angello.Common', 'Angello.Productboard', 'Angello.Admin', 'Angello.Customerdashboard']);
 
 
 myModule.config(function($routeProvider){

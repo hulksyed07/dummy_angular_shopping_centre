@@ -1,13 +1,21 @@
-angular.module('Angello.Productboard').controller('ProductboardCtrl', function(ProductModel, AngelloHelper, TypeModel, $http) {
+angular.module('Angello.Productboard').controller('ProductboardCtrl', function(ProductModel, AngelloHelper, TypeModel, Types, $http) {
     var productboard = this;
-    // productboard.types = {}
-    productboard.types = ProductModel.getTypes();
+    productboard.types = {}
+    // productboard.types = ProductModel.getTypes();
     productboard.getAllTypes = function() {
         TypeModel.getTypes()
             .then( function(result){
                 productboard.types = result;
+                productboard.typesIndex = AngelloHelper.buildIndex(productboard.types, 'name');
                 console.log('productboard.types is: ' + productboard.types);
+                console.log(productboard.types);
             });
+
+        // productboard.types = TypeModel.getTypes();
+        // productboard.types = Types.query();
+        // productboard.types = Types.query();
+        console.log('productboard.types inside product controller is: ' + productboard.types);
+        console.log(productboard.types);
     }
 
     productboard.products = {};
@@ -20,10 +28,11 @@ angular.module('Angello.Productboard').controller('ProductboardCtrl', function(P
     };
 
     productboard.getAllProducts();
-    // productboard.getAllTypes();
+    productboard.getAllTypes();
     console.log('productboard.types outside is:' + productboard.types);
+    console.log(productboard.types);
 
-    productboard.typesIndex = AngelloHelper.buildIndex(productboard.types, 'name');
+    // productboard.typesIndex = AngelloHelper.buildIndex(productboard.types, 'name');
     console.log('productboard.typeindex is: ' + productboard.typesIndex);
     productboard.currentProduct = null;
     productboard.editedProduct = {};
